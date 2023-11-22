@@ -50,6 +50,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>uber</finalName>
 	</build>
 
 </project>
