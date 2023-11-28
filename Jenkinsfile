@@ -33,7 +33,15 @@ pipeline {
 
     stage('Docker Run') {
       steps {
-        sh 'docker run -it -d -p 9090:9090 --name your-container-name counterapp'
+        script {
+                    // Run the container in detached mode with interactivity
+                    sh 'docker run -p 9090:9090 counterapp'
+                    def containerId = sh(script: 'docker ps -lq', returnStdout: true).trim()
+                    
+                
+
+                  
+                }
       }
     }
   }
@@ -46,11 +54,10 @@ pipeline {
 
     always {
       steps {
-                // Remove all containers
-                sh 'docker rm -f $(docker ps -aq)'
-
-                // Remove all images
-                sh 'docker rmi -f $(docker images -aq)'
+                script {
+                sh 'docker stop ${containerId} || true'  // Stop the container (if it's still running)
+                sh 'docker rm ${containerId} || true'    // Remove the container (if it exists)
+                            }
             }
       
   }
