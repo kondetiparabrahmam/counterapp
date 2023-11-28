@@ -36,17 +36,10 @@ pipeline {
 
     stage('Docker Run') {
       steps {
-        script {
-                    // Run the container in detached mode with interactivity
-                    //sh 'docker run -p 9090:9090 counterapp'
-                    //def containerId = sh(script: 'docker ps -lq', returnStdout: true).trim()
-                    def containerId = sh(script: 'docker run -d -p 9090:9090 counterapp', returnStdout: true).trim()
-                    
+        script {                    
+                    def containerId = sh(script: 'docker run -d -p 9090:9090 counterapp', returnStdout: true).trim()                    
                     // Store the container ID for later cleanup
-                    env.CONTAINER_ID = containerId
-                    
-                
-
+                    env.CONTAINER_ID = containerId                                 
                   
                 }
       }
@@ -58,10 +51,9 @@ pipeline {
             // Actions to be taken if the pipeline is successful
             
            script {
-                    // Run the hostname command and print the output
-                    def hostname = sh(script: 'hostname', returnStdout: true).trim()
-                    echo "Hostname: ${hostname}"
-                    echo 'Application is accessible at http://${hostname}:9090'
+                    def publicIp = sh(script: 'curl -s ifconfig.me', returnStdout: true).trim()
+                    echo "Public IP: ${publicIp}"
+                    echo "Application is accessible at http://${publicIp}:9090"
                 }
         }
 
