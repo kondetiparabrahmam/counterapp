@@ -27,7 +27,9 @@ pipeline {
 
     stage('Docker Build') {
       steps {
-        sh 'docker rm -f $(docker ps -a -q)'    
+        sh 'docker stop $(docker ps -q) || true'
+        sh 'docker rm -f $(docker ps -a -q) || true'
+        sh 'docker rmi -f $(docker images -q) || true'   
         sh 'docker build -t counterapp .'
       }
     }
