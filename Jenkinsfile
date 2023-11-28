@@ -53,8 +53,13 @@ pipeline {
   post {
         success {
             // Actions to be taken if the pipeline is successful
-             echo 'Application is accessible at http://3.93.17.109:9090'
-            // Additional success actions go here
+            
+           script {
+                    // Run the hostname command and print the output
+                    def hostname = sh(script: 'hostname', returnStdout: true).trim()
+                    echo "Hostname: ${hostname}"
+                    echo 'Application is accessible at http://${hostname}:9090'
+                }
         }
 
         failure {
