@@ -33,7 +33,7 @@ pipeline {
 
     stage('Docker Run') {
       steps {
-        sh 'docker run -p 9090:9090 --name your-container-name counterapp'
+        sh 'docker run -it -d -p 9090:9090 --name your-container-name counterapp'
       }
     }
   }
