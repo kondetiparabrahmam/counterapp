@@ -12,4 +12,4 @@ COPY target/uber.jar /app/uber.jar
 EXPOSE 9090
 
 # Define the command to run your application
-CMD ["java", "-jar", "uber.jar"]
+CMD ["java", "-jar", "/app/uber.jar", "&"]
