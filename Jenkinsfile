@@ -51,19 +51,25 @@ pipeline {
   }
 
   post {
-    success {
-      // Display information on how to access the application in a browser
-      echo 'Application is accessible at http://3.93.17.109:9090'
-    }
+        success {
+            // Actions to be taken if the pipeline is successful
+             echo 'Application is accessible at http://3.93.17.109:9090'
+            // Additional success actions go here
+        }
 
-    always {
-      steps {
-                script {
+        failure {
+         
+            echo 'Pipeline failed!'
+           script {
                 sh 'docker stop ${env.CONTAINER_ID} || true'  // Stop the container (if it's still running)
                 sh 'docker rm ${env.CONTAINER_ID} || true'  
                             }
-            }
-      
-  }
-}
+        }
+
+        always {
+            // Common actions to be taken regardless of success or failure
+            echo 'Cleaning up...'
+           
+        }
+    }
 }
