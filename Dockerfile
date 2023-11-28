@@ -6,7 +6,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copy the JAR file into the container at /app
-COPY /var/lib/jenkins/workspace/counterapppiepline/target/uber.jar /app/uber.jar
+COPY target/uber.jar /app/uber.jar
 
 # Expose the port the app runs on
 EXPOSE 9090
