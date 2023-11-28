@@ -47,7 +47,7 @@ pipeline {
     always {
       // Clean up resources even if the pipeline fails
    
-       sh 'docker rm -f $(docker ps -a -q)
+      sh 'docker images'
       
   }
 }
