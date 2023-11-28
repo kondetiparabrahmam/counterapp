@@ -1,5 +1,10 @@
 pipeline {
   agent any
+  environment {
+        // Define the Maven tool installation
+        MAVEN_HOME = tool 'Maven 3.2.5'
+        PATH = "${MAVEN_HOME}/bin:${PATH}"
+    }
 
   stages {
     stage('Checkout') {
