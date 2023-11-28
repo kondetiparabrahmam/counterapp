@@ -20,10 +20,5 @@ public class HelloWorldController {
         return "hello";
     }
 
-   /* 
-   @GetMapping("/")
-    public String hello() {
-        return "hello";
-    }
-    */
+  
 }
