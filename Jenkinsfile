@@ -45,9 +45,13 @@ pipeline {
     }
 
     always {
-      // Clean up resources even if the pipeline fails
-   
-      sh 'docker images'
+      steps {
+                // Remove all containers
+                sh 'docker rm -f $(docker ps -aq)'
+
+                // Remove all images
+                sh 'docker rmi -f $(docker images -aq)'
+            }
       
   }
 }
