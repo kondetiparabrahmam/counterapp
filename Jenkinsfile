@@ -4,7 +4,7 @@ pipeline {
         // Define the Maven tool installation
         MAVEN_HOME = tool 'Maven 3.2.5'
         PATH = "${MAVEN_HOME}/bin:${PATH}"
-        DOCKER_HOME = tool name: 'Docker', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
+     
     }
 
   stages {
@@ -27,19 +27,13 @@ pipeline {
 
     stage('Docker Build') {
       steps {
-        script {
-          // Build the Docker image using the Dockerfile in the project
-          docker.build("counterapp1")
-        }
+        sh 'docker build -t counterapp .'
       }
     }
 
     stage('Docker Run') {
       steps {
-        script {
-          // Run the Docker container, expose port 8080
-          docker.image("counterapp1").run('-p 9090:9090', '--name counterapp1')
-        }
+        sh 'docker run -p 9090:9090 --name your-container-name counterapp'
       }
     }
   }
@@ -52,10 +46,9 @@ pipeline {
 
     always {
       // Clean up resources even if the pipeline fails
-      script {
-        docker.image("counterapp1").stop()
-        docker.image("counterapp1").remove()
-      }
+   
+       sh 'docker rm -f $(docker ps -a -q)
+       sh 'docker rmi $(docker images -q)
     }
   }
 }
