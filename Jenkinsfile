@@ -4,8 +4,9 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        // Checkout the code from your version control system
-        checkout https: //github.com/kondetiparabrahmam/counterapp.git
+        // Checkout the code
+        cleanWs()
+                  checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/kondetiparabrahmam/counterapp.git']])         
       }
     }
 
