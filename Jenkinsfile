@@ -35,8 +35,12 @@ pipeline {
       steps {
         script {
                     // Run the container in detached mode with interactivity
-                    sh 'docker run -p 9090:9090 counterapp'
-                    def containerId = sh(script: 'docker ps -lq', returnStdout: true).trim()
+                    //sh 'docker run -p 9090:9090 counterapp'
+                    //def containerId = sh(script: 'docker ps -lq', returnStdout: true).trim()
+                    def containerId = sh(script: 'docker run -d -p 9090:9090 counterapp', returnStdout: true).trim()
+                    
+                    // Store the container ID for later cleanup
+                    env.CONTAINER_ID = containerId
                     
                 
 
@@ -55,8 +59,8 @@ pipeline {
     always {
       steps {
                 script {
-                sh 'docker stop ${containerId} || true'  // Stop the container (if it's still running)
-                sh 'docker rm ${containerId} || true'    // Remove the container (if it exists)
+                sh 'docker stop ${env.CONTAINER_ID} || true'  // Stop the container (if it's still running)
+                sh 'docker rm ${env.CONTAINER_ID} || true'  
                             }
             }
       
