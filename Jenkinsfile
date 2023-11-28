@@ -27,10 +27,7 @@ pipeline {
 
     stage('Docker Build') {
       steps {
-        sh 'docker rm -f $(docker ps -a -q)'
-        sh 'docker ps -a --filter "ancestor=counterapp" -q | xargs -r docker rm -f'
-        sh 'docker rm -f counterapp'
-        sh 'docker rmi $(docker images -a -q)'
+        sh 'docker rm -f $(docker ps -a -q)'    
         sh 'docker build -t counterapp .'
       }
     }
