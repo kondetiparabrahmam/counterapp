@@ -4,6 +4,7 @@ pipeline {
         // Define the Maven tool installation
         MAVEN_HOME = tool 'Maven 3.2.5'
         PATH = "${MAVEN_HOME}/bin:${PATH}"
+        DOCKER_HOME = tool name: 'Docker', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
     }
 
   stages {
