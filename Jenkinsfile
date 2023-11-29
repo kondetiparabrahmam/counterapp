@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  node 'Built-In Node'
   environment {
         
         MAVEN_HOME = tool 'Maven 3.2.5'
@@ -22,6 +22,7 @@ pipeline {
 
     stage('Build') {
       steps {
+	      
         script {         
           sh 'mvn clean install'
         }
