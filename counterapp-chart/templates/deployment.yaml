@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: counterapp
-          image: your-docker-registry/myapp:latest
+          image: your-docker-registry/counterapp:latest
           ports:
             - containerPort: 9090
 
