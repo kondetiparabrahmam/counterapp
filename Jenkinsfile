@@ -44,8 +44,8 @@ pipeline {
     stage('Docker Run') {
       steps {
         script {                    
-                    def containerId = sh(script: 'docker run -d -p 9090:9090 counterapp', returnStdout: true).trim()                    
-                    env.CONTAINER_ID = containerId                                
+                 //   def containerId = sh(script: 'docker run -d -p 9090:9090 counterapp', returnStdout: true).trim()                    
+                 //   env.CONTAINER_ID = containerId                                
                   
                 }
       }
@@ -67,8 +67,9 @@ pipeline {
          
             echo 'Pipeline failed!'
            script {
-                sh 'docker stop ${env.CONTAINER_ID} || true'  // Stop the container (if it's still running)
-                sh 'docker rm ${env.CONTAINER_ID} || true'  
+             //   sh 'docker stop ${env.CONTAINER_ID} || true'  // Stop the container (if it's still running)
+//sh 'docker rm ${env.CONTAINER_ID} || true' 
+		   echo "pipeline failed"
                             }
         }
 
