@@ -1,10 +1,10 @@
 pipeline {
   agent any
   environment {
-        // Define the Maven tool installation
+        
         MAVEN_HOME = tool 'Maven 3.2.5'
         PATH = "${MAVEN_HOME}/bin:${PATH}"
-		DOCKER_IMAGE_NAME = "bannukondeti/counterapp"
+	DOCKER_IMAGE_NAME = "bannukondeti/counterapp"
         DOCKER_IMAGE_TAG = "latest"
         DOCKER_USERNAME = "kondetipbhm@gmail.com"
         DOCKER_PASSWORD = "Bannu@123"
@@ -37,7 +37,7 @@ pipeline {
         sh "docker tag ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
         sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD} ${DOCKER_REGISTRY_URL}"
         sh "docker push ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"		
-        //sh 'docker build -t counterapp .'
+    
       }
     }
 
