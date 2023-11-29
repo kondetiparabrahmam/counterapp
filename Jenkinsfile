@@ -53,15 +53,15 @@ pipeline {
                 script {
 		  node('test') {
                     // Set the node where you want to run the Helm commands
-                    node('your-node-label') {
-					     sh 'kubectl delete pods --selector=counterapp'
+                   
+			sh 'kubectl delete pods --selector=counterapp'
                          sh 'kubectl delete services --selector=counterapp'                
                          sh 'helm package /home/ubuntu/counterapp/counterapp-chart'                      
                         sh 'helm install release-name /home/ubuntu/counterapp/counterapp-chart'
                     
 					}
 				}
-                }
+                
             }
         }
   }
