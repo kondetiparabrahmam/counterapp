@@ -1,5 +1,5 @@
 pipeline {
-  agent { label 'Built-In Node' }
+  agent any
   environment {
         
         MAVEN_HOME = tool 'Maven 3.2.5'
