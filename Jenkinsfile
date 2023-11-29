@@ -42,12 +42,10 @@ pipeline {
     }
 
     stage('Docker Run') {
-      steps {
-        script {                    
+      steps {              
                  
-		echo "Docker pushing done"
-                  
-                }
+		echo "Docker pushing done"                 
+               
       }
     }
   }
