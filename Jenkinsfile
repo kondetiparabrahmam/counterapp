@@ -8,7 +8,7 @@ pipeline {
         DOCKER_IMAGE_TAG = "latest"
         DOCKER_USERNAME = "kondetipbhm@gmail.com"
         DOCKER_PASSWORD = "Bannu@123"
-        DOCKER_REGISTRY_URL = "https://hub.docker.com/"
+        DOCKER_REGISTRY_URL = "https://index.docker.io/v1/"
             
     }
 
