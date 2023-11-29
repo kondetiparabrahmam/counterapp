@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: counterapp
+  labels:
+    app: counterapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: counterapp
+  template:
+    metadata:
+      labels:
+        app: counterapp
+    spec:
+      containers:
+        - name: counterapp
+          image: your-docker-registry/myapp:latest
+          ports:
+            - containerPort: 9090
+
+

@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: counterapp
+spec:
+  selector:
+    app: counterapp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9090
+  type: LoadBalancer

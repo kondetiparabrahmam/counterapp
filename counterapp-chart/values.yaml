@@ -1,0 +1,6 @@
+# values.yaml
+replicaCount: 1
+image:
+  repository: counterapp
+  tag: latest
+

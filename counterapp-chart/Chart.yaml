@@ -1,0 +1,4 @@
+apiVersion: v2
+name: counterapp
+description: A Helm chart for my Java application
+version: 0.1.0
