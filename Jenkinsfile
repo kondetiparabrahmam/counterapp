@@ -4,7 +4,7 @@ pipeline {
         
         MAVEN_HOME = tool 'Maven 3.2.5'
         PATH = "${MAVEN_HOME}/bin:${PATH}"
-	DOCKER_IMAGE_NAME = "bannukondeti/counterapp"
+	    DOCKER_IMAGE_NAME = "bannukondeti/counterapp"
         DOCKER_IMAGE_TAG = "latest"
         DOCKER_USERNAME = "kondetipbhm@gmail.com"
         DOCKER_PASSWORD = "Bannu@123"
